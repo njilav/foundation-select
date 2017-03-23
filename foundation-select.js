@@ -13,15 +13,17 @@
         selectedTitles = [];
         select.find('option').each( function () {
           selectClasses = [];
-          if ($(this).attr('selected')) {
-            selectedTitles.push($(this).html());
-            selectClasses.push('selected');
-          }
-          if ($(this).attr('class')) {
-            selectClasses.push($(this).attr('class'));
-          }
-          if ($(this).prop('disabled')) {
-            selectClasses.push('disabled');
+          if($(this).is(':visible')) {
+            if ($(this).attr('selected')) {
+              selectedTitles.push($(this).html());
+              selectClasses.push('selected');
+            }
+            if ($(this).attr('class')) {
+              selectClasses.push($(this).attr('class'));
+            }
+            if ($(this).prop('disabled')) {
+              selectClasses.push('disabled');
+            }
           }
           selectOptions.push('<li data-value="' + $(this).val() + '" class="' + selectClasses.join(' ') + '"><span class="option-title">' + $(this).html() + '</span></li>');
         });
